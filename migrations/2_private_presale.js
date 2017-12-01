@@ -9,10 +9,10 @@ module.exports = function(deployer, network, accounts) {
 
 	let token, placeholder, tokensale, proxy, btcLibrary, mathLibrary;
 
-	const startTime = 1512147657;
+	const startTime = 2512199657;
 
-	const kWallet = 0x8988905b49Ba113c99B1dD01b8db83d5A14e01cB;
-	const lWallet = 0x73397478614f74b5E7f425BCAFD7FF71dd26EF61;
+	const kWallet = '0x8988905b49Ba113c99B1dD01b8db83d5A14e01cB';
+	const lWallet = '0x73397478614f74b5E7f425BCAFD7FF71dd26EF61';
 
 	const mainnetBtcRelay = '0x41f274c0023f83391de4e0733c609df5a124c3d4';
 	const ropstenBtcRelay = '0x5770345100a27b15f5b40bec86a701f888e8c601';
