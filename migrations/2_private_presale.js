@@ -3,21 +3,27 @@ const Placeholder = artifacts.require("LeapTokensalePlaceholder");
 const PrivatePresale = artifacts.require("LeapPrivatePreTokensale");
 const BitcoinProxy = artifacts.require("BitcoinProxyNoGas");
 const BTC = artifacts.require("BTC");
+const SafeMath = artifacts.require("SafeMath");
 
 module.exports = function(deployer, network, accounts) {
 	if(network === 'development') return;
 
-	let token, placeholder, tokensale, proxy, btcLibrary;
+	let token, placeholder, tokensale, proxy, btcLibrary, mathLibrary;
 
-	const startTime = 1512084141118; // 01.12.17 02:22
-	const kownWallet = 0x123;
-	const leapWallet = 0x456;
+	const startTime = 1512138836;
+	const kownWallet = 0x42323D59fa62069155Df1852361E5382A1528A98;
+	const leapWallet = 0x73397478614f74b5E7f425BCAFD7FF71dd26EF61;
 
 	const mainnetBtcRelay = '0x41f274c0023f83391de4e0733c609df5a124c3d4';
 	const ropstenBtcRelay = '0x5770345100a27b15f5b40bec86a701f888e8c601';
 	const btcRelay = network === 'mainnet' ? mainnetBtcRelay : ropstenBtcRelay;
 
 	deployer.then(function() {
+		return deployer.deploy(SafeMath);
+	}).then(function(instance) {
+		mathLibrary = instance;
+		return deployer.link(SafeMath, PrivatePresale);
+	}).then(function() {
 		return deployer.deploy(BTC);
 	}).then(function(instance) {
 		btcLibrary = instance;
@@ -40,5 +46,11 @@ module.exports = function(deployer, network, accounts) {
 		return token.pause();
 	}).then(function() {
 		return token.transferOwnership(tokensale.address);
-	})
+	}).then(function() {
+		console.log("Done!");
+		console.log("Token: " + token.address);
+		console.log("Placeholder: " + placeholder.address);
+		console.log("Private presale: " + tokensale.address);
+		console.log("Bitcoin Proxy: " + proxy.address);
+	});
 }
