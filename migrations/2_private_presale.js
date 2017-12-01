@@ -11,7 +11,8 @@ module.exports = function(deployer, network, accounts) {
 	let token, placeholder, tokensale, proxy, btcLibrary, mathLibrary;
 
 	const startTime = 1512138836;
-	const kownWallet = 0x42323D59fa62069155Df1852361E5382A1528A98;
+
+	const kownWallet = 0x8988905b49Ba113c99B1dD01b8db83d5A14e01cB;
 	const leapWallet = 0x73397478614f74b5E7f425BCAFD7FF71dd26EF61;
 
 	const mainnetBtcRelay = '0x41f274c0023f83391de4e0733c609df5a124c3d4';
