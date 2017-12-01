@@ -6,7 +6,7 @@ let infuraToken = "";
 let mnemonic = "";
 
 if(fs.existsSync(path.resolve(__dirname, "mnemonic"))) {
-    mnemonic = fs.readFileSync(path.resolve(__dirname, "mnemonic")).toString();
+    mnemonic = fs.readFileSync(path.resolve(__dirname, "mnemonic")).toString().trim();
 } else {
     console.log("WARNING! mnemonic file not found");
 }
