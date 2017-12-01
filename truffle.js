@@ -1,11 +1,14 @@
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const fs = require('fs');
+const path = require('path');
 
 let infuraToken = "";
 let mnemonic = "";
 
-if(fs.existsSync("mnemonic")) {
-  mnemonic = fs.readFileSync("mnemonic").toString();
+if(fs.existsSync(path.resolve(__dirname, "mnemonic"))) {
+    mnemonic = fs.readFileSync(path.resolve(__dirname, "mnemonic")).toString();
+} else {
+    console.log("WARNING! mnemonic file not found");
 }
 
 module.exports = {
