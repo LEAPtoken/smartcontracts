@@ -6,11 +6,10 @@ const BTC = artifacts.require("BTC");
 const SafeMath = artifacts.require("SafeMath");
 
 module.exports = function(deployer, network, accounts) {
-	if(network === 'development') return;
 
 	let token, placeholder, tokensale, proxy, btcLibrary, mathLibrary;
 
-	const startTime = 1512138836;
+	const startTime = 1512147098;
 
 	const kownWallet = 0x8988905b49Ba113c99B1dD01b8db83d5A14e01cB;
 	const leapWallet = 0x73397478614f74b5E7f425BCAFD7FF71dd26EF61;
