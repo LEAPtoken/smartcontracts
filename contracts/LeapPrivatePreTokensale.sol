@@ -23,7 +23,7 @@ contract LeapPrivatePreTokensale is Tokensale {
         return 52500000e18;
     }
     function duration() public constant returns (uint256) {
-        return 7 days;
+        return 10 days;
     }
 
     function rate() public constant returns (uint256) {
