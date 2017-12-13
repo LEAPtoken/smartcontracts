@@ -6,10 +6,11 @@ const BTC = artifacts.require("BTC");
 const SafeMath = artifacts.require("SafeMath");
 
 module.exports = function(deployer, network, accounts) {
+	if(network === 'nomigration') return;
 
 	let token, placeholder, tokensale, proxy, btcLibrary, mathLibrary;
 
-	const startTime = 1512169588;
+	const startTime = Math.floor((new Date() / 1000)) + 1;
 
 	const kWallet = '0x8988905b49Ba113c99B1dD01b8db83d5A14e01cB';
 	const lWallet = '0x73397478614f74b5E7f425BCAFD7FF71dd26EF61';
@@ -29,16 +30,24 @@ module.exports = function(deployer, network, accounts) {
 		btcLibrary = instance;
 		return deployer.link(BTC, BitcoinProxy);
 	}).then(function() {
-		return Token.new();
+		return deployer.deploy(Token);
+	}).then(function() {
+		return Token.deployed();
 	}).then(function(instance) {
 		token = instance;
-		return Placeholder.new(token.address);
+		return deployer.deploy(Placeholder, token.address);
+	}).then(function() {
+		return Placeholder.deployed();
 	}).then(function(instance) {
 		placeholder = instance;
-		return PrivatePresale.new(startTime, token.address, placeholder.address, kWallet, lWallet);
+		return deployer.deploy(PrivatePresale, startTime, token.address, placeholder.address, kWallet, lWallet);
+	}).then(function() {
+		return PrivatePresale.deployed();
 	}).then(function(instance) {
 		tokensale = instance;
-		return BitcoinProxy.new(btcRelay, tokensale.address);
+		return deployer.deploy(BitcoinProxy, btcRelay, tokensale.address);
+	}).then(function() {
+		return BitcoinProxy.deployed();
 	}).then(function(instance) {
 		proxy = instance;
 		return tokensale.setBitcoinProxy(proxy.address);

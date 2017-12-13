@@ -21,7 +21,7 @@ RUN apt-get install -y python-dev
 RUN apt-get install -y libssl-dev
 
 WORKDIR /tmp
-RUN npm install -g truffle
+RUN npm install -g truffle@3.4.6
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
