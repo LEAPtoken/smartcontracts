@@ -2,8 +2,6 @@ const Token = artifacts.require("LEAP");
 const Placeholder = artifacts.require("LeapTokensalePlaceholder");
 const PrivatePresale = artifacts.require("LeapPrivatePreTokensale");
 const Presale = artifacts.require("LeapPreTokensale");
-const BitcoinProxy = artifacts.require("BitcoinProxyNoGas");
-const BTC = artifacts.require("BTC");
 const SafeMath = artifacts.require("SafeMath");
 
 module.exports = function(deployer, network, accounts) {
@@ -11,7 +9,7 @@ module.exports = function(deployer, network, accounts) {
 
 	let previousTokensale, nextTokensale, token, placeholder, mathLib, actualStartTime, actualEndTime;
 
-	const startTime = 2513002867;
+	const startTime = Math.floor((new Date() / 1000)) + 3600;
 
 	const kWallet = '0x8988905b49Ba113c99B1dD01b8db83d5A14e01cB';
 	const lWallet = '0x73397478614f74b5E7f425BCAFD7FF71dd26EF61';
@@ -20,15 +18,19 @@ module.exports = function(deployer, network, accounts) {
 		previousTokensale = instance;
 		return previousTokensale.finalize();
 	}).then(function(result) {
+		console.log("Previous tokensale: " + previousTokensale.address + " was finalized");
 		return Token.deployed();
 	}).then(function(instance) {
 		token = instance;
+		console.log("Token: " + token.address);
 		return Placeholder.deployed();
 	}).then(function(instance) {
 		placeholder = instance;
-		return SafeMath.deployed();
+		console.log("Placeholder: " + placeholder.address);
+		return deployer.deploy(SafeMath);
 	}).then(function(instance) {
 		mathLib = instance;
+		console.log("Math Library: " + mathLib.address);
 		return deployer.link(SafeMath, Presale);
 	}).then(function() {
 		return deployer.deploy(Presale, startTime, token.address, placeholder.address, kWallet, lWallet);
@@ -37,8 +39,6 @@ module.exports = function(deployer, network, accounts) {
 	}).then(function(instance) {
 		nextTokensale = instance;
 		console.log("Next tokensale: " + nextTokensale.address);
-		console.log("Placeholder: " + placeholder.address);
-		console.log("Token: " + token.address);
 		return token.owner();
 	}).then(function(tokenOwner) {
 		console.log("Token owner: " + tokenOwner);
