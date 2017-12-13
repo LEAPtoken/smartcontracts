@@ -1,0 +1,642 @@
+{
+  "contractName": "LeapTokensalePlaceholder",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "changeTokenController",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6060604052341561000f57600080fd5b60405160208061054f83398101604052808051906020019091905050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050610493806100bc6000396000f300606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610067578063d6c8976b146100bc578063f2fde38b146100f5578063fc0c546a1461012e575b600080fd5b341561007257600080fd5b61007a610183565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100c757600080fd5b6100f3600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506101a8565b005b341561010057600080fd5b61012c600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506102ec565b005b341561013957600080fd5b610141610441565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561020357600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663f2fde38b826040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050600060405180830381600087803b15156102bf57600080fd5b6102c65a03f115156102d057600080fd5b5050508073ffffffffffffffffffffffffffffffffffffffff16ff5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561034757600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561038357600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820a51809e9d61bac03280345b5e7f46b440ee7c3083b2d391d3ea962f4176c60400029",
+  "deployedBytecode": "0x606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610067578063d6c8976b146100bc578063f2fde38b146100f5578063fc0c546a1461012e575b600080fd5b341561007257600080fd5b61007a610183565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100c757600080fd5b6100f3600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506101a8565b005b341561010057600080fd5b61012c600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506102ec565b005b341561013957600080fd5b610141610441565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561020357600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663f2fde38b826040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050600060405180830381600087803b15156102bf57600080fd5b6102c65a03f115156102d057600080fd5b5050508073ffffffffffffffffffffffffffffffffffffffff16ff5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561034757600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561038357600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820a51809e9d61bac03280345b5e7f46b440ee7c3083b2d391d3ea962f4176c60400029",
+  "sourceMap": "108:310:11:-;;;183:86;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;509:10:20;501:5;;:18;;;;;;;;;;;;;;;;;;255:6:11;242:5;;:20;;;;;;;;;;;;;;;;;;183:86;108:310;;;;;;",
+  "deployedSourceMap": "108:310:11:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;275:141:11;;;;;;;;;;;;;;;;;;;;;;;;;;;;834:169:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;159:17:11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20:20;;;;;;;;;;;;;:::o;275:141:11:-;654:5:20;;;;;;;;;;;640:19;;:10;:19;;;632:28;;;;;;;;344:5:11;;;;;;;;;;;:23;;;368:8;344:33;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;400:8;387:22;;;834:169:20;654:5;;;;;;;;;;;640:19;;:10;:19;;;632:28;;;;;;;;930:1;910:22;;:8;:22;;;;902:31;;;;;;;;967:8;939:37;;960:5;;;;;;;;;;;939:37;;;;;;;;;;;;990:8;982:5;;:16;;;;;;;;;;;;;;;;;;834:169;:::o;159:17:11:-;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.11;\n\nimport 'zeppelin-solidity/contracts/ownership/Ownable.sol';\nimport './LEAP.sol';\n\ncontract LeapTokensalePlaceholder is Ownable {\n    LEAP public token;\n\n    function LeapTokensalePlaceholder(address _token){\n        token = LEAP(_token);\n    }\n\n    function changeTokenController(address newOwner) onlyOwner {\n        token.transferOwnership(newOwner);\n        selfdestruct(newOwner);\n    }\n}\n",
+  "sourcePath": "/dapp/leap/contracts/LeapTokensalePlaceholder.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/dapp/leap/contracts/LeapTokensalePlaceholder.sol",
+      "exportedSymbols": {
+        "LeapTokensalePlaceholder": [
+          2095
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".11"
+          ]
+        },
+        "id": 2058,
+        "name": "PragmaDirective",
+        "src": "0:24:11"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 4259,
+          "absolutePath": "zeppelin-solidity/contracts/ownership/Ownable.sol",
+          "file": "zeppelin-solidity/contracts/ownership/Ownable.sol",
+          "scope": 2096,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 2059,
+        "name": "ImportDirective",
+        "src": "26:59:11"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 1421,
+          "absolutePath": "/dapp/leap/contracts/LEAP.sol",
+          "file": "./LEAP.sol",
+          "scope": 2096,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 2060,
+        "name": "ImportDirective",
+        "src": "86:20:11"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            4258
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            2095,
+            4258
+          ],
+          "name": "LeapTokensalePlaceholder",
+          "scope": 2096
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": [
+                null
+              ]
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "Ownable",
+                  "referencedDeclaration": 4258,
+                  "type": "contract Ownable"
+                },
+                "id": 2061,
+                "name": "UserDefinedTypeName",
+                "src": "145:7:11"
+              }
+            ],
+            "id": 2062,
+            "name": "InheritanceSpecifier",
+            "src": "145:7:11"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "token",
+              "scope": 2095,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "contract LEAP",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "LEAP",
+                  "referencedDeclaration": 1420,
+                  "type": "contract LEAP"
+                },
+                "id": 2063,
+                "name": "UserDefinedTypeName",
+                "src": "159:4:11"
+              }
+            ],
+            "id": 2064,
+            "name": "VariableDeclaration",
+            "src": "159:17:11"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": true,
+              "modifiers": [
+                null
+              ],
+              "name": "LeapTokensalePlaceholder",
+              "payable": false,
+              "scope": 2095,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_token",
+                      "scope": 2076,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 2065,
+                        "name": "ElementaryTypeName",
+                        "src": "217:7:11"
+                      }
+                    ],
+                    "id": 2066,
+                    "name": "VariableDeclaration",
+                    "src": "217:14:11"
+                  }
+                ],
+                "id": 2067,
+                "name": "ParameterList",
+                "src": "216:16:11"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2068,
+                "name": "ParameterList",
+                "src": "232:0:11"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "contract LEAP"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2064,
+                              "type": "contract LEAP",
+                              "value": "token"
+                            },
+                            "id": 2069,
+                            "name": "Identifier",
+                            "src": "242:5:11"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "contract LEAP",
+                              "type_conversion": true
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 1420,
+                                  "type": "type(contract LEAP)",
+                                  "value": "LEAP"
+                                },
+                                "id": 2070,
+                                "name": "Identifier",
+                                "src": "250:4:11"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2066,
+                                  "type": "address",
+                                  "value": "_token"
+                                },
+                                "id": 2071,
+                                "name": "Identifier",
+                                "src": "255:6:11"
+                              }
+                            ],
+                            "id": 2072,
+                            "name": "FunctionCall",
+                            "src": "250:12:11"
+                          }
+                        ],
+                        "id": 2073,
+                        "name": "Assignment",
+                        "src": "242:20:11"
+                      }
+                    ],
+                    "id": 2074,
+                    "name": "ExpressionStatement",
+                    "src": "242:20:11"
+                  }
+                ],
+                "id": 2075,
+                "name": "Block",
+                "src": "232:37:11"
+              }
+            ],
+            "id": 2076,
+            "name": "FunctionDefinition",
+            "src": "183:86:11"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "name": "changeTokenController",
+              "payable": false,
+              "scope": 2095,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "newOwner",
+                      "scope": 2094,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 2077,
+                        "name": "ElementaryTypeName",
+                        "src": "306:7:11"
+                      }
+                    ],
+                    "id": 2078,
+                    "name": "VariableDeclaration",
+                    "src": "306:16:11"
+                  }
+                ],
+                "id": 2079,
+                "name": "ParameterList",
+                "src": "305:18:11"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2082,
+                "name": "ParameterList",
+                "src": "334:0:11"
+              },
+              {
+                "attributes": {
+                  "arguments": [
+                    null
+                  ]
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 4232,
+                      "type": "modifier ()",
+                      "value": "onlyOwner"
+                    },
+                    "id": 2080,
+                    "name": "Identifier",
+                    "src": "324:9:11"
+                  }
+                ],
+                "id": 2081,
+                "name": "ModifierInvocation",
+                "src": "324:9:11"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "transferOwnership",
+                              "referencedDeclaration": 1419,
+                              "type": "function (address) external"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2064,
+                                  "type": "contract LEAP",
+                                  "value": "token"
+                                },
+                                "id": 2083,
+                                "name": "Identifier",
+                                "src": "344:5:11"
+                              }
+                            ],
+                            "id": 2085,
+                            "name": "MemberAccess",
+                            "src": "344:23:11"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2078,
+                              "type": "address",
+                              "value": "newOwner"
+                            },
+                            "id": 2086,
+                            "name": "Identifier",
+                            "src": "368:8:11"
+                          }
+                        ],
+                        "id": 2087,
+                        "name": "FunctionCall",
+                        "src": "344:33:11"
+                      }
+                    ],
+                    "id": 2088,
+                    "name": "ExpressionStatement",
+                    "src": "344:33:11"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4877,
+                              "type": "function (address)",
+                              "value": "selfdestruct"
+                            },
+                            "id": 2089,
+                            "name": "Identifier",
+                            "src": "387:12:11"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2078,
+                              "type": "address",
+                              "value": "newOwner"
+                            },
+                            "id": 2090,
+                            "name": "Identifier",
+                            "src": "400:8:11"
+                          }
+                        ],
+                        "id": 2091,
+                        "name": "FunctionCall",
+                        "src": "387:22:11"
+                      }
+                    ],
+                    "id": 2092,
+                    "name": "ExpressionStatement",
+                    "src": "387:22:11"
+                  }
+                ],
+                "id": 2093,
+                "name": "Block",
+                "src": "334:82:11"
+              }
+            ],
+            "id": 2094,
+            "name": "FunctionDefinition",
+            "src": "275:141:11"
+          }
+        ],
+        "id": 2095,
+        "name": "ContractDefinition",
+        "src": "108:310:11"
+      }
+    ],
+    "id": 2096,
+    "name": "SourceUnit",
+    "src": "0:419:11"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+  },
+  "networks": {
+    "1": {
+      "events": {},
+      "links": {},
+      "address": "0x1205a66c648dba83d52f0d16327c9cdb4e38c79b"
+    },
+    "3": {
+      "events": {},
+      "links": {},
+      "address": "0x5c81795b7e8720953cff69d9d74460e573b35e0f"
+    },
+    "1513191845809": {
+      "events": {},
+      "links": {},
+      "address": "0x0dfff2ec76a8a29ada3619da374c560cbace2c44"
+    }
+  },
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2017-12-13T19:13:01.970Z"
+}
