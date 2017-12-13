@@ -14,7 +14,9 @@ module.exports = function(deployer, network, accounts) {
 	const kWallet = '0x8988905b49Ba113c99B1dD01b8db83d5A14e01cB';
 	const lWallet = '0x73397478614f74b5E7f425BCAFD7FF71dd26EF61';
 
-	PrivatePresale.deployed().then(function(instance) {
+	deployer.then(function() {
+		return PrivatePresale.deployed();
+	}).then(function(instance) {
 		previousTokensale = instance;
 		return previousTokensale.finalize();
 	}).then(function(result) {
