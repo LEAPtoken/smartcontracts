@@ -9,15 +9,13 @@ const ether = utils.ether;
 const getBalance = utils.getBalance;
 
 contract("LeapPreTokensale", function([_, investor, proxy, placeholder, kownWallet, leapWallet]) {
-	const firstStageRaised = new web3.BigNumber(inBaseUnits(15003000));
-	const secondStageRaised = new web3.BigNumber(inBaseUnits(29001450));
-	const thirdStageRaised = new web3.BigNumber(inBaseUnits(41995550));
-
-	const priceFirstStage = 4500;
-	const priceSecondStage = 4350;
-	const priceThirdStage = 4200;
+	const priceFirstStage = 5250;
+	const priceSecondStage = 4750;
 
 	const divider = 10000;
+
+	const firstStageRaised = new web3.BigNumber(inBaseUnits(105000));
+	const secondStageRaised = new web3.BigNumber(inBaseUnits(137151500));
 
 	before(async function() {
 		await utils.advanceBlock();
@@ -46,31 +44,18 @@ contract("LeapPreTokensale", function([_, investor, proxy, placeholder, kownWall
 	it("should process ETH payments correctly", async function() {
 		await utils.setTime(await this.tokensale.startTime());
 
-		const firstStageInvestmentAmount = ether(3334).div(divider);
-		const secondStageInvestmentAmount = ether(6667).div(divider);
-
-		// NOTICE: Here we exceed hardcap over 1 ether but is appropriate solution
-		const thirdStageInvestmentAmount = ether(9999).div(divider);
+		const firstStageInvestmentAmount = ether(20).div(divider);
+		const secondStageInvestmentAmount = ether(28874).div(divider);
 
 		await this.tokensale.buyCoinsETH({from: investor, value: firstStageInvestmentAmount});
-
 		const supplyFirstStage = await this.tokensale.leapRaised();
 
 		await this.tokensale.buyCoinsETH({from: investor, value: secondStageInvestmentAmount});
-
 		const supplySecondStage = await this.tokensale.leapRaised();
-
-		await this.tokensale.buyCoinsETH({from: investor, value: thirdStageInvestmentAmount});
-
-		const supplyThirdStage = await this.tokensale.leapRaised();
-
-		await expectThrow(this.tokensale.buyCoinsETH({from: investor, value: ether(1).div(divider)}));
 
 		expect(supplyFirstStage).to.be.bignumber.equal(firstStageRaised.div(divider));
 		expect(supplySecondStage).to.be.bignumber.equal(firstStageRaised.plus(secondStageRaised).div(divider));
-		expect(supplyThirdStage).to.be.bignumber.equal(firstStageRaised.plus(secondStageRaised).plus(thirdStageRaised).div(divider));
 	});
-
 
 	it("should distribute funds between two wallets equally", async function() {
 		await utils.setTime(await this.tokensale.startTime());

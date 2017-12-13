@@ -21,20 +21,18 @@ contract LeapPreTokensale is Tokensale {
     }
 
     function hardcap() public constant returns (uint256) {
-        return 86000000e18;
+        return 137257059e18;
     }
 
     function duration() public constant returns (uint256) {
-        return 14 days;
+        return 7 days;
     }
 
     function rate() public constant returns (uint256) {
-        if(leapRaised < 15000000e18) {
-            return 4500;
-        } else if(leapRaised < 44000000e18) {
-            return 4350;
+        if(leapRaised < 100000e18) {
+            return 5250;
         } else {
-            return 4200;
+            return 4750;
         }
     }
 

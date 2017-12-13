@@ -25,12 +25,10 @@ contract LeapPreTokensaleFake is LeapPreTokensale {
     }
 
     function rate() public constant returns (uint256) {
-        if(leapRaised < 15000000e18 / divider) {
-            return 4500;
-        } else if(leapRaised < 44000000e18 / divider) {
-            return 4350;
+        if(leapRaised < 100000e18 / divider) {
+            return 5250;
         } else {
-            return 4200;
+            return 4750;
         }
     }
 }
