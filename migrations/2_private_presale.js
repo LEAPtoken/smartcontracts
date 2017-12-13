@@ -10,7 +10,7 @@ module.exports = function(deployer, network, accounts) {
 
 	let token, placeholder, tokensale, proxy, btcLibrary, mathLibrary;
 
-	const startTime = Math.floor((new Date() / 1000)) + 1;
+	const startTime = Math.floor((new Date() / 1000)) + 3600;
 
 	const kWallet = '0x8988905b49Ba113c99B1dD01b8db83d5A14e01cB';
 	const lWallet = '0x73397478614f74b5E7f425BCAFD7FF71dd26EF61';

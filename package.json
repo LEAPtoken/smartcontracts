@@ -13,7 +13,7 @@
     "chai-bignumber": "^2.0.1",
     "solidity-sha3": "^0.4.1",
     "truffle-hdwallet-provider": "0.0.3",
-    "zeppelin-solidity": "^1.2.0"
+    "zeppelin-solidity": "1.2.0"
   },
   "devDependencies": {},
   "scripts": {
