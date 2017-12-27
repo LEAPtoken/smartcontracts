@@ -18,8 +18,6 @@ module.exports = function(deployer, network, accounts) {
 		return PrivatePresale.deployed();
 	}).then(function(instance) {
 		previousTokensale = instance;
-		return previousTokensale.finalize();
-	}).then(function(result) {
 		console.log("Previous tokensale: " + previousTokensale.address + " was finalized");
 		return Token.deployed();
 	}).then(function(instance) {
