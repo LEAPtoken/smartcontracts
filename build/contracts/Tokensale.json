@@ -12,7 +12,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -26,7 +25,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -40,7 +38,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -54,7 +51,6 @@
       "name": "setBitcoinProxy",
       "outputs": [],
       "payable": false,
-      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -63,7 +59,6 @@
       "name": "finalize",
       "outputs": [],
       "payable": false,
-      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -77,7 +72,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -86,7 +80,6 @@
       "name": "buyCoinsETH",
       "outputs": [],
       "payable": true,
-      "stateMutability": "payable",
       "type": "function"
     },
     {
@@ -100,7 +93,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -114,7 +106,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -133,7 +124,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -147,7 +137,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -165,7 +154,6 @@
       "name": "buyCoinsBTC",
       "outputs": [],
       "payable": false,
-      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -179,7 +167,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -193,7 +180,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -207,7 +193,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -226,7 +211,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -240,7 +224,6 @@
       "name": "updateBitcoinMultiplier",
       "outputs": [],
       "payable": false,
-      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -254,7 +237,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -268,7 +250,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -303,7 +284,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -317,7 +297,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -331,7 +310,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -345,7 +323,6 @@
       "name": "transferOwnership",
       "outputs": [],
       "payable": false,
-      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -359,7 +336,6 @@
       "name": "refund",
       "outputs": [],
       "payable": true,
-      "stateMutability": "payable",
       "type": "function"
     },
     {
@@ -373,7 +349,6 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -396,12 +371,10 @@
         }
       ],
       "payable": false,
-      "stateMutability": "nonpayable",
       "type": "constructor"
     },
     {
       "payable": true,
-      "stateMutability": "payable",
       "type": "fallback"
     },
     {
@@ -508,23 +481,6 @@
         }
       ],
       "name": "ETHCharge",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "previousOwner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "OwnershipTransferred",
       "type": "event"
     }
   ],
@@ -10459,5 +10415,9 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2017-12-13T19:05:39.723Z"
+  "updatedAt": "2017-12-13T19:05:39.723Z",
+  "contract_name": "Tokensale",
+  "unlinked_binary": "0x",
+  "schema_version": "0.0.5",
+  "updated_at": 1515592766435
 }

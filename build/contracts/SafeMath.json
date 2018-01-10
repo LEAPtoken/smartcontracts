@@ -1354,5 +1354,9 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2017-12-13T19:13:01.989Z"
+  "updatedAt": "2017-12-13T19:13:01.989Z",
+  "contract_name": "SafeMath",
+  "unlinked_binary": "0x60606040523415600e57600080fd5b5b603680601c6000396000f30060606040525b600080fd00a165627a7a72305820f39db489e9dabc75ecf0af16f48a4fe0e3a2265a01ea561371903c7e8fcbb3c60029",
+  "schema_version": "0.0.5",
+  "updated_at": 1515592766437
 }
