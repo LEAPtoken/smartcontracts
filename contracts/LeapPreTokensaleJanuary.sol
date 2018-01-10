@@ -5,7 +5,7 @@ import './Tokensale.sol';
 contract LeapPreTokensaleJanuary is Tokensale {
     address secondWallet;
 
-    function LeapPreTokensale(
+    function LeapPreTokensaleJanuary(
         uint256 _startTime,
         address _token,
         address _placeholder,
