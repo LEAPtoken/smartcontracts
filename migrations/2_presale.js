@@ -1,8 +1,9 @@
 const Token = artifacts.require("LEAP");
 const Placeholder = artifacts.require("LeapTokensalePlaceholder");
-const PrivatePresale = artifacts.require("LeapPrivatePreTokensale");
-const Presale = artifacts.require("LeapPreTokensale");
 const SafeMath = artifacts.require("SafeMath");
+
+const PresalePrevious = artifacts.require("LeapPreTokensale");
+const Presale = artiacts.require("LeapPreTokensaleJanuary");
 
 module.exports = function(deployer, network, accounts) {
 	if(network === 'nomigration') return;
@@ -15,9 +16,11 @@ module.exports = function(deployer, network, accounts) {
 	const lWallet = '0x73397478614f74b5E7f425BCAFD7FF71dd26EF61';
 
 	deployer.then(function() {
-		return PrivatePresale.deployed();
+		return PresalePrevious.deployed();
 	}).then(function(instance) {
 		previousTokensale = instance;
+		return previousTokensale.finalize();
+	}).then(function(result) {
 		console.log("Previous tokensale: " + previousTokensale.address + " was finalized");
 		return Token.deployed();
 	}).then(function(instance) {
