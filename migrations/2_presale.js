@@ -3,7 +3,7 @@ const Placeholder = artifacts.require("LeapTokensalePlaceholder");
 const SafeMath = artifacts.require("SafeMath");
 
 const PresalePrevious = artifacts.require("LeapPreTokensale");
-const Presale = artiacts.require("LeapPreTokensaleJanuary");
+const Presale = artifacts.require("LeapPreTokensaleJanuary");
 
 module.exports = function(deployer, network, accounts) {
 	if(network === 'nomigration') return;
