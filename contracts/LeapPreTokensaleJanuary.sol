@@ -2,7 +2,7 @@ pragma solidity ^0.4.11;
 
 import './Tokensale.sol';
 
-contract LeapPreTokensale is Tokensale {
+contract LeapPreTokensaleJanuary is Tokensale {
     address secondWallet;
 
     function LeapPreTokensale(
