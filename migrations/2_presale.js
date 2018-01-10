@@ -10,17 +10,15 @@ module.exports = function(deployer, network, accounts) {
 
 	let previousTokensale, nextTokensale, token, placeholder, mathLib, actualStartTime, actualEndTime;
 
-	const startTime = Math.floor((new Date() / 1000)) + 3600;
+	const startTime = Math.floor((new Date() / 1000)) + 1800;
 
-	const kWallet = '0x8988905b49Ba113c99B1dD01b8db83d5A14e01cB';
-	const lWallet = '0x73397478614f74b5E7f425BCAFD7FF71dd26EF61';
+	const kWallet = '0xF869E31a013a7Fd78EEcc67383812DEA9184957e';
+	const lWallet = '0x8BDa06b0Df609B02f59a3D4794ac42403de574aA';
 
 	deployer.then(function() {
 		return PresalePrevious.deployed();
 	}).then(function(instance) {
 		previousTokensale = instance;
-		return previousTokensale.finalize();
-	}).then(function(result) {
 		console.log("Previous tokensale: " + previousTokensale.address + " was finalized");
 		return Token.deployed();
 	}).then(function(instance) {
@@ -33,7 +31,6 @@ module.exports = function(deployer, network, accounts) {
 		return deployer.deploy(SafeMath);
 	}).then(function(instance) {
 		mathLib = instance;
-		console.log("Math Library: " + mathLib.address);
 		return deployer.link(SafeMath, Presale);
 	}).then(function() {
 		return deployer.deploy(Presale, startTime, token.address, placeholder.address, kWallet, lWallet);
