@@ -1,14 +1,16 @@
-const Token = artifacts.require('./LEAP.sol');
+const Token = artifacts.require('./PresaleLEAP.sol');
 
 const utils = require('./utils.js');
 const expect = utils.expect;
 const expectThrow = utils.expectThrow;
 
-contract("Token", function([deployer, investor, hacker, placeholder]) {
+contract("Token", function([deployer, mintAgent, anotherMintAgent, investor, hacker]) {
 	let token;
 
 	beforeEach(async function() {
 		token = await Token.new();
+		token.setMintAgent(mintAgent, true);
+		token.setMintAgent(anotherMintAgent, true);
 		token.pause();
 	});
 
@@ -16,88 +18,45 @@ contract("Token", function([deployer, investor, hacker, placeholder]) {
 		expect(await token.totalSupply()).to.be.bignumber.equal(0);
 	});
 
-	it("should be ownable", async function() {
+	it("should have owner", async function() {
 		expect(await token.owner()).to.be.equal(deployer);
+	});
+
+	it("should be paused", async function() {
+		expect(await token.paused()).to.be.true;
 	});
 
 	it("should be mintable", async function() {
 		expect(await token.mintingFinished()).to.be.false;
 	});
 
-	it("we should not forget to pause token after deploy", async function() {
-		expect(await token.paused()).to.be.true;
-	});
-
 	it("should not accept payments", async function() {
 		await expectThrow(token.send(1));
 	});
 
-	it("should remember previous owners when ownership transfered", async function() {
-		await token.transferOwnership(placeholder);
+	it("mint agent should be able to issue tokens", async function() {
+		await expectThrow(token.mint(investor, 1000));
 
-		expect(await token.owner()).to.be.equal(placeholder);
-		expect(await token.exOwners(placeholder)).to.be.equal(false);
-		expect(await token.exOwners(deployer)).to.be.equal(true);
-
-		await token.transferOwnership(deployer, {from: placeholder});
-
-		expect(await token.owner()).to.be.equal(deployer);
-		expect(await token.exOwners(placeholder)).to.be.equal(true);
-		expect(await token.exOwners(deployer)).to.be.equal(true);
-	});
-
-	it("should refund/burn tokens when investor didn't complete KYC", async function() {
-		await token.mint(investor, 1000);
-
-		const afterMintingAmount = await token.balanceOf(investor);
-		const afterMintingSupply = await token.totalSupply();
-
-		const tx = await token.refund(investor, 1000);
-
-		const afterRefundingAmount = await token.balanceOf(investor);
-		const afterRefundingSupply = await token.totalSupply();
-
-		const loggedEvent = tx.logs.find(e => e.event === 'Refunded');
-
-		expect(loggedEvent.args['investor']).to.be.equal(investor);
-		expect(loggedEvent.args['amount']).to.be.bignumber.equal(1000);
-
-		expect(afterMintingAmount).to.be.bignumber.equal(1000);
-		expect(afterRefundingAmount).to.be.bignumber.equal(0);
-
-		expect(afterMintingSupply).to.be.bignumber.equal(1000);
-		expect(afterRefundingSupply).to.be.bignumber.equal(0);
-	});
-
-	it("should refund specific amount of tokens by previous owner", async function() {
-		await token.mint(investor, 1000);
-
-		await token.transferOwnership(placeholder);
-		await token.refund(investor, 600);
-
-		expect(await token.balanceOf(investor)).to.be.bignumber.equal(400);
-		expect(await token.totalSupply()).to.be.bignumber.equal(400);
-	});
-
-	it("should fail to refund tokens by hacker", async function() {
-		await token.mint(investor, 1000);
-
-		await expectThrow(token.refund(investor, 1000, {from: hacker}));
+		await token.mint(investor, 1000, { from: mintAgent });
 
 		expect(await token.balanceOf(investor)).to.be.bignumber.equal(1000);
+
+		await finishMinting();
+
+		await expectThrow(token.mint(investor, 1000, { from: mintAgent }));
 	});
 
-	it("should finish refunding forever then nobody will be able to burn your tokens", async function() {
-		await token.mint(investor, 1000);
+	it("owner should be able to burn tokens", async function() {
+		await token.mint(investor, 1000, { from: anotherMintAgent });
 
-		await token.refund(investor, 100);
+		await expectThrow(token.burn(investor, 100));
 
-		await token.finishRefunding();
+		await token.burn(investor, 100, { from: anotherMintAgent });
 
-		await expectThrow(token.refund(investor, 100));
+		await token.finishMinting();
 
-		await token.transferOwnership(hacker);
+		await expectThrow(token.burn(investor, 100, { from: anotherMintAgent }));
 
-		await expectThrow(token.refund(investor, 100));
-	})
-});
+		expect(await token.balanceOf(investor)).to.be.bignumber.equal(900);
+	});
+})
