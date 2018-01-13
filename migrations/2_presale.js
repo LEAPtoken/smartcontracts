@@ -13,13 +13,17 @@ module.exports = function(deployer, network, accounts) {
 		return deployer.link(SafeMath, Presale);
 	}).then(function() {
 		return deployer.deploy(Token);
-	}).then(function(instance) {
-		token = instance;
-		console.log("TOKEN: " + token.address);
+	}).then(function() {
+		return Token.deployed();
+	}).then(function(tokenInstance) {
+		token = tokenInstance;
+	}).then(function() {
 		return deployer.deploy(Presale, token.address);
-	}).then(function(instance) {
-		presale = instance;
-		console.log("PRESALE: " + presale.address);
+	}).then(function() {
+		return Presale.deployed();
+	}).then(function(presaleInstance) {
+		presale = presaleInstance;
+
 		return token.setMintAgent(presale.address, true);
 	}).then(function() {
 		return token.setMintAgent(accounts[0], true);
