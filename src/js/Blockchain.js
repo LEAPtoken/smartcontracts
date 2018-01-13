@@ -25,7 +25,7 @@ const API = {
       return Promise.all([
         instance.totalSupply.call(),
         instance.mintingFinished.call(),
-        instance.mintAgents.call(account)
+        account ? instance.mintAgents.call(account) : false
       ]);
     });
 
@@ -72,7 +72,7 @@ export default function init(web3) {
     const checkToken = token.deployed();
     const checkPresale = presale.deployed();
 
-    Promise.all([checkToken, checkPresale]).then(() => {
+    Promise.all([checkToken, checkPresale]).then(([tokenContract, presaleConract]) => {
       resolve(API);
     }).catch((reason) => {
       reject('[Invalid network]: ' + reason);
