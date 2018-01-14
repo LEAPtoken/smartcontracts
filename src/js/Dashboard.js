@@ -19,6 +19,8 @@ import InfoPresaleToken from './InfoPresaleToken';
 import MintPresaleToken from './MintPresaleToken';
 import BurnPresaleToken from './BurnPresaleToken';
 
+import StageBonus from './StageBonus';
+
 import Blockchain from './Blockchain';
 
 export default class Dashboard extends Component {
@@ -91,6 +93,9 @@ export default class Dashboard extends Component {
           <Section>
             <Heading>Actions: </Heading>
             <Tabs>
+              <Tab title='Check stage bonus'>
+                <StageBonus calculate={this.state.blockchain.getStageBonus} />
+              </Tab>
               <Tab title='Mint Presale Token'>
                 <MintPresaleToken onSubmit={this._mintTokens} />
               </Tab>

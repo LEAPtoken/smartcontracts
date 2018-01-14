@@ -56,6 +56,14 @@ const API = {
     return token.deployed().then(instance => {
       return instance.burn(address, amount, { from: account, gas: 300000 });
     });
+  },
+
+  getStageBonus({ amount, raised }) {
+    return presale.deployed().then(instance => {
+      return instance.stageBonus.call(amount, raised);
+    }).then(result => {
+      return result.toNumber();
+    });
   }
 };
 
