@@ -5,10 +5,10 @@ const utils = require('./utils');
 const expect = utils.expect;
 const expectThrow = utils.expectThrow;
 
-contract("Presale", function([deployer, mintAgent, investor]) {
-	const investment = 1;
-	const expectedBalance = 4500;
+const leap = utils.inBaseUnits(18);
+const eth = utils.ether;
 
+contract("Presale", function([deployer, mintAgent, investor]) {
 	before(async function() {
 		await utils.advanceBlock();
 	});
@@ -28,12 +28,27 @@ contract("Presale", function([deployer, mintAgent, investor]) {
 		expect(await this.token.mintAgents(this.presale.address)).to.be.equal(true);
 	});
 
-	it("should process payments", async function() {
-		await utils.setTime(1515888000);
+	it("should calculate stage bonuses correctly", async function() {
+		const investment = eth(1);
+		const stages = [850, 1700, 2550, 3400, 4250, 5100, 5950, 6800, 7650, 8500, 9350, 10200, 11050, 11900, 12750, 13600, 14450, 15300];
+		const expectedBonuses = [1500, 1425, 1350, 1275, 1200, 1125, 1050, 975, 900, 825, 750, 675, 600, 525, 450, 375, 300, 225];
 
-		await this.presale.sendTransaction({from: investor, value: investment});
+		const bonuses = stages.map(etherTotal => this.presale.stageBonus(investment, eth(etherTotal).sub(1)));
 
-		expect(await this.presale.weiRaised()).to.be.bignumber.equal(investment);
-		expect(await this.token.balanceOf(investor)).to.be.bignumber.equal(expectedBalance);
+		for(let i = 0; i < expectedBonuses.length; i++) {
+			expect(await bonuses[i]).to.be.bignumber.equal(leap(expectedBonuses[i]));
+		}
+	});
+
+	it("should calculate whale bonuses correctly", async function() {
+		const investments = [10, 25, 50, 100, 250, 500];
+		const percents = [5, 10, 20, 30, 50, 75];
+		const expectedBonuses = [1500, 7500, 30000, 90000, 375000, 1125000];
+
+		const bonuses = investments.map(amount => this.presale.whaleBonus(eth(amount)));
+
+		for(let i = 0; i < bonuses.length; i++) {
+			expect(await bonuses[i]).to.be.bignumber.equal(leap(expectedBonuses[i]));
+		}
 	});
 });
