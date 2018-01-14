@@ -27,12 +27,13 @@ export default class StageBonus extends Component {
 
   _onSubmit(event) {
     event.preventDefault();
-    this.props.calculate({
-      amount: this.state.amount,
-      raised: this.state.raised
-    }).then((result) => {
+
+    const amount = this.props.convertInput(this.state.amount, 'ether');
+    const raised = this.props.convertInput(this.state.raised, 'ether');
+    this.props.calculate({ amount, raised }).then((bonusRaw) => {
+      const bonus = this.props.convertResult(bonusRaw);
       this.setState({
-        result
+        result: bonus
       });
     });
   }
@@ -54,12 +55,12 @@ export default class StageBonus extends Component {
       <Box align='center'>
         <Form onSubmit={this._onSubmit}>
           <FormFields>
-            <Header><Heading>Stage bonus: {this.state.result}</Heading></Header>
+            <Header><Heading tag='h2'>Stage bonus: {this.state.result} LEAP</Heading></Header>
             <fieldset>
-              <FormField label='Wei Amount'>
+              <FormField label='Payment amount (ETH)'>
                 <TextInput value={this.state.amount} onDOMChange={this._onChangeAmount} />
               </FormField>
-              <FormField label='Wei Raised'>
+              <FormField label='Total collected (ETH)'>
                 <TextInput value={this.state.raised} onDOMChange={this._onChangeRaised} />
               </FormField>
             </fieldset>

@@ -29,7 +29,8 @@ export default class Dashboard extends Component {
 
     this.state = {
       tokenInfo: null,
-      blockchain: null
+      blockchain: null,
+      web3: null
     };
 
     this._connectWeb3 = this._connectWeb3.bind(this);
@@ -58,6 +59,7 @@ export default class Dashboard extends Component {
 
         Blockchain(web3).then((API) => {
           this.setState({
+            web3: web3,
             blockchain: API
           });
           resolve();
@@ -94,7 +96,7 @@ export default class Dashboard extends Component {
             <Heading>Actions: </Heading>
             <Tabs>
               <Tab title='Check stage bonus'>
-                <StageBonus calculate={this.state.blockchain.getStageBonus} />
+                <StageBonus calculate={this.state.blockchain.getStageBonus} convertInput={this.state.web3.toWei} convertResult={this.state.web3.fromWei} />
               </Tab>
               <Tab title='Mint Presale Token'>
                 <MintPresaleToken onSubmit={this._mintTokens} />
