@@ -64,6 +64,14 @@ const API = {
     }).then(result => {
       return result.toNumber();
     });
+  },
+
+  getWhaleBonus({ amount }) {
+    return presale.deployed().then(instance => {
+      return instance.whaleBonus.call(amount);
+    }).then(result => {
+      return result.toNumber();
+    });
   }
 };
 

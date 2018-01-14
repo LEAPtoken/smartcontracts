@@ -20,6 +20,7 @@ import MintPresaleToken from './MintPresaleToken';
 import BurnPresaleToken from './BurnPresaleToken';
 
 import StageBonus from './StageBonus';
+import WhaleBonus from './WhaleBonus';
 
 import Blockchain from './Blockchain';
 
@@ -97,6 +98,9 @@ export default class Dashboard extends Component {
             <Tabs>
               <Tab title='Check stage bonus'>
                 <StageBonus calculate={this.state.blockchain.getStageBonus} convertInput={this.state.web3.toWei} convertResult={this.state.web3.fromWei} />
+              </Tab>
+              <Tab title='Check whale bonus'>
+                <WhaleBonus calculate={this.state.blockchain.getWhaleBonus} convertInput={this.state.web3.toWei} convertResult={this.state.web3.fromWei} />
               </Tab>
               <Tab title='Mint Presale Token'>
                 <MintPresaleToken onSubmit={this._mintTokens} />
