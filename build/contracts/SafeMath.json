@@ -1341,11 +1341,22 @@
     "name": "solc",
     "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "1": {
+      "links": {},
+      "events": {},
+      "updated_at": 1516042899993
+    },
+    "3": {
+      "links": {},
+      "events": {},
+      "updated_at": 1516042899993
+    }
+  },
   "schemaVersion": "1.0.1",
   "updatedAt": "2018-01-12T00:03:26.664Z",
   "contract_name": "SafeMath",
-  "unlinked_binary": "0x60606040523415600e57600080fd5b5b603680601c6000396000f30060606040525b600080fd00a165627a7a72305820d73742905e2671de3d30fcec85d6bf5dc7e0702395921b0f1d24df5d868421a30029",
+  "unlinked_binary": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820278aa8882afd3d13a829b1620bf0ac7f73bc3770ec176b5efe56be443de0ba200029",
   "schema_version": "0.0.5",
-  "updated_at": 1516040611826
+  "updated_at": 1516042899993
 }
