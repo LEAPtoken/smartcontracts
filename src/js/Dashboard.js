@@ -87,7 +87,7 @@ export default class Dashboard extends Component {
     return (
       <App>
         {this.state.tokenInfo &&
-        <Article margin={{horizontal: 'medium'}}>
+        <Article margin={{ horizontal: 'medium' }}>
           <Header><Title>LEAP Token</Title></Header>
           <Section>
             <Heading>Information: </Heading>
