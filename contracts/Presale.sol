@@ -39,9 +39,9 @@ contract Presale is Ownable {
 
         uint256 weiAmount = msg.value;
 
-        uint256 tokens = weiAmount.mul(rate) +
-                        stageBonus(weiAmount, weiRaised) +
-                        whaleBonus(weiAmount);
+        uint256 tokens = weiAmount.mul(rate)
+                        .add(stageBonus(weiAmount, weiRaised))
+                        .add(whaleBonus(weiAmount));
 
         weiRaised = weiRaised.add(weiAmount);
 

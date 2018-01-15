@@ -29,7 +29,7 @@ contract("Presale", function([deployer, mintAgent, investor]) {
 	});
 
 	it("should process payments", async function() {
-		await utils.setTime(1516034723);
+		await utils.setTime(1521913400);
 
 		const investment = 1;
 		const expectedBalance = 4500;
