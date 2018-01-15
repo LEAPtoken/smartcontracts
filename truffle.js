@@ -3,7 +3,7 @@ let HDWalletProvider = require('truffle-hdwallet-provider');
 const fs = require('fs');
 const path = require('path');
 
-let infuraToken = "jPkVat66IVKkmtAsy0DJ";
+let infuraToken = "ylMt1EQfLUbcsnd1SmnB";
 let mnemonic = "";
 
 if(fs.existsSync(path.resolve(__dirname, "mnemonic"))) {
