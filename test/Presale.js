@@ -30,7 +30,7 @@ contract("Presale", function([deployer, mintAgent, investor]) {
 
 	it("should calculate stage bonuses correctly", async function() {
 		const investment = eth(1);
-		const stages = [850, 1700, 2550, 3400, 4250, 5100, 5950, 6800, 7650, 8500, 9350, 10200, 11050, 11900, 12750, 13600, 14450, 15300];
+		const stages = [850, 1700, 2550, 2890, 3230, 3570, 3910, 4250, 4590, 4930, 5270, 5610, 5950, 6290, 6630, 6970, 7310, 7650];
 		const expectedBonuses = [1500, 1425, 1350, 1275, 1200, 1125, 1050, 975, 900, 825, 750, 675, 600, 525, 450, 375, 300, 225];
 
 		const bonuses = stages.map(etherTotal => this.presale.stageBonus(investment, eth(etherTotal).sub(1)));
