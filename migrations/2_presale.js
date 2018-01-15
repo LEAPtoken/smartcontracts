@@ -8,12 +8,6 @@ module.exports = function(deployer, network, accounts) {
 	let token, presale;
 
 	deployer.then(function() {
-		return deployer.deploy(SafeMath);
-	}).then(function() {
-		return deployer.link(SafeMath, Presale);
-	}).then(function() {
-		return deployer.deploy(Token);
-	}).then(function() {
 		return Token.deployed();
 	}).then(function(tokenInstance) {
 		token = tokenInstance;
