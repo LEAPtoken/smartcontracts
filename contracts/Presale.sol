@@ -16,8 +16,8 @@ contract Presale is Ownable {
 
     uint256 public cap = 7650 ether;
     uint256 public rate = 3000;
-    uint256 public startTime = 1515936500;
-    uint256 public endTime = 1515996500;
+    uint256 public startTime = 1516039200;
+    uint256 public endTime = 1516752000;
 
     address public wallet1 = 0xF869E31a013a7Fd78EEcc67383812DEA9184957e;
     address public wallet2 = 0x8BDa06b0Df609B02f59a3D4794ac42403de574aA;
