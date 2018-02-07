@@ -76,10 +76,12 @@ export default class Dashboard extends Component {
   }
 
   _mintTokens(data) {
+    data.amount = this.state.web3.toWei(data.amount, 'ether');
     return this.state.blockchain.mintTokens(data).then(this._updateTokenInfo);
   }
 
   _burnTokens(data) {
+    data.amount = this.state.web3.toWei(data.amount, 'ether');
     return this.state.blockchain.burnTokens(data).then(this._updateTokenInfo);
   }
 
