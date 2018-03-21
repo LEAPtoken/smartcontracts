@@ -1,58 +1,33 @@
-const Token = artifacts.require("LEAP");
-const Placeholder = artifacts.require("LeapTokensalePlaceholder");
+const Token = artifacts.require("PresaleLEAP");
+const Presale = artifacts.require("Presale");
 const SafeMath = artifacts.require("SafeMath");
-
-const PresalePrevious = artifacts.require("LeapPreTokensale");
-const Presale = artifacts.require("LeapPreTokensaleJanuary");
 
 module.exports = function(deployer, network, accounts) {
 	if(network === 'nomigration') return;
 
-	let previousTokensale, nextTokensale, token, placeholder, mathLib, actualStartTime, actualEndTime;
-
-	const startTime = Math.floor((new Date() / 1000)) + 1800;
-
-	const kWallet = '0xF869E31a013a7Fd78EEcc67383812DEA9184957e';
-	const lWallet = '0x8BDa06b0Df609B02f59a3D4794ac42403de574aA';
+	let token, presale;
 
 	deployer.then(function() {
-		return PresalePrevious.deployed();
-	}).then(function(instance) {
-		previousTokensale = instance;
-		console.log("Previous tokensale: " + previousTokensale.address + " was finalized");
-		return Token.deployed();
-	}).then(function(instance) {
-		token = instance;
-		console.log("Token: " + token.address);
-		return Placeholder.deployed();
-	}).then(function(instance) {
-		placeholder = instance;
-		console.log("Placeholder: " + placeholder.address);
 		return deployer.deploy(SafeMath);
-	}).then(function(instance) {
-		mathLib = instance;
+	}).then(function() {
 		return deployer.link(SafeMath, Presale);
 	}).then(function() {
-		return deployer.deploy(Presale, startTime, token.address, placeholder.address, kWallet, lWallet);
+		return deployer.deploy(Token);
+	}).then(function() {
+		return Token.deployed();
+	}).then(function(tokenInstance) {
+		token = tokenInstance;
+	}).then(function() {
+		return deployer.deploy(Presale, token.address);
 	}).then(function() {
 		return Presale.deployed();
-	}).then(function(instance) {
-		nextTokensale = instance;
-		console.log("Next tokensale: " + nextTokensale.address);
-		return token.owner();
-	}).then(function(tokenOwner) {
-		console.log("Token owner: " + tokenOwner);
-		return placeholder.token();
-	}).then(function(placeholderToken) {
-		console.log("Placeholder token: " + placeholderToken);
+	}).then(function(presaleInstance) {
+		presale = presaleInstance;
+
+		return token.setMintAgent(presale.address, true);
 	}).then(function() {
-		return placeholder.changeTokenController(nextTokensale.address);
+		return token.setMintAgent(accounts[0], true);
 	}).then(function() {
-		console.log("Done!");
-		return token.owner();
-	}).then(function(tokenOwner) {
-		console.log("Token owner: " + tokenOwner);
-	}).catch(function(reason) {
-		console.error(reason);
+		return token.pause();
 	});
 }
